@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html ng-app="recipe">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="app.css">
+</head>
+<body>
+  <ul class="menu">
+    <li><a href="#/publicRecipes">Browse Recipes </a></li>
+    <li><a href="#/myRecipes">My Recipes</a></li>
+    <li><a href="#/shoppingList">Shopping List</a></li>
+  </ul>
+
+  <div ng-view></div>
+
+  <script src="components/angular/angular.min.js"></script>
+  <script src="components/angular-route/angular-route.min.js"></script>
+  <script src="app.js"></script>
+  <script src="views/publicRecipes/publicRecipes.js"></script>
+  <script src="views/myRecipes/myRecipes.js"></script>
+  <script src="views/editRecipes/editRecipes.js"></script>
+  <script src="views/shoppingList/shoppingList.js"></script>
+</body>
+</html>
