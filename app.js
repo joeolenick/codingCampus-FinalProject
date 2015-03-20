@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('recipe', [
+var app = angular.module('recipe', [
   'ngRoute',
   'myApp.publicRecipes',
   'myApp.viewRecipes',
@@ -14,4 +14,12 @@ angular.module('recipe', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/publicRecipes'});
-}]);
+}])
+
+app.directive("offcanvas", function() {
+  $(document).ready(function (scope, element, attributes) {
+      $('[data-toggle="offcanvas"]').on("click", function() {
+              $('.row-offcanvas').toggleClass('active');
+      }
+  }
+}
