@@ -8,16 +8,17 @@
 <!-- /.row -->
 
 <!-- Project One -->
-<div class="row">
+<div class="row" ng-repeat="recipe in recipeList track by $index">
 	<div class="col-md-7">
 		<a href="#">
 			<img class="img-responsive" src="/components/images/crepe.jpg" alt="">
 		</a>
 	</div>
 	<div class="col-md-5">
-		<h3>Crepes!</h3>    <!-- Recipe name-->
-		<h4>Breakfast</h4>  <!-- Recipe mealType-->
-		<p>The most incredible food possibly know to man. it is an extreme blast of deliciousness in your mouth with a surprise of delectable insides. either choclate, jelly, sugar, cinnamon, or whatever else you can think of.</p>
+		<h3>{{recipe.name}} </h3>    <!-- Recipe name-->
+		<h4>{{recipe.mealType}} </h4>  <!-- Recipe mealType-->
+		<p>{{recipe.previewText}} </p>
+		<p>{{recipe.rating}}</p>
 		<a class="btn btn-primary" href="#/viewRecipes">Make it!  <span class="glyphicon glyphicon-chevron-right"></span></a>
 	</div>
 </div>

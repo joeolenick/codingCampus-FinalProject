@@ -1,8 +1,8 @@
-var crepes = new Recipe({
+var crepes = new models.recipe({
 	name: "Crapes",
 	region: "French",
 	createdBy: "Joe Olenick",
-	published: Date.now,
+	published: Date.now(),
 	isPublic: "true",
 	ingredientList: 
 		[{item: "all-purpose flour", amount: "1", unitOfMeasure: "cup" },
@@ -19,3 +19,4 @@ var crepes = new Recipe({
 	mealType: ["breakfast", "dessert"],
 	rating: 5
 })
+crepes.save();

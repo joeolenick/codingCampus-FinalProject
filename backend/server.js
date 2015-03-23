@@ -1,18 +1,19 @@
 //Bringing in express 
 var express = require('express');
-var app = express();
+var apps = express();
 //Bringing in bodyParser for JSON
 var bodyParser = require('body-parser');
 
 //Bringing in Router files
 var recipes = require('./router.js');
 
+var ngResource = require('ng-resource');
 ///////////////
 //Middleware
 ///////////////
 
 //Authorization
-app.use( function (req, res, next) {
+apps.use( function (req, res, next) {
 	if (req.headers.authorization === 'SuperSecretPasswordStoredInPlainText') {
 		next();
 	} else {
@@ -21,12 +22,12 @@ app.use( function (req, res, next) {
 });
 
 //Body Parser, JSON
-app.use(bodyParser.json());
+apps.use(bodyParser.json());
 //Body Parser, URL encode 
-app.use(bodyParser.urlencoded({ extended: false }));
+apps.use(bodyParser.urlencoded({ extended: false }));
 
 //Linking router variables to url path used
-app.use('/recipes/', recipes);
+apps.use('/recipes/', recipes);
 
-//Port the app will run on
-app.listen(5000);
+//Port the apps will run on
+apps.listen(5000);

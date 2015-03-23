@@ -5,13 +5,16 @@ var db = mongoose.connect('mongodb://localhost/recipe');
 
 var models = {};
 
-var RecipeSchema = mongoose.Schema({
+var recipeSchema = mongoose.Schema({
     name: String,
     region: Array,               	// Chinese, Italian, etc
     createdBy: String,         		// Who created it // will be DB ID eventually
-    published: Date,            	// when they created it
+    published: { type: Date, default: Date.now },           	// when they created it
     isPublic: Boolean,         		// is publish will show in Browse
-    ingredientList: [Ingredients],   // Tsp, cup, etc 
+    ingredientList: 
+		[{item: String, 
+			amount: Number, 
+			unitOfMeasure: String}],  // Tsp, cup, etc 
     instructions: Array,			//How to make it
     servings: String,				
     equipment: Array,				//Any special Equipment needed? 
@@ -22,16 +25,8 @@ var RecipeSchema = mongoose.Schema({
     userComment: String
 });
 
-var IngredientsSchema = mongoose.schema({
-	item: String,
-	amount: Number
-	unitOfMeasure: String
-})
 
-models.recipe = mongoose.model('recipe', RecipeSchema);
-models.recipe = mongoose.model('ingredients', IngredientsSchema);
-
-
+models.recipe = mongoose.model('recipes', recipeSchema);
 
 
 module.exports = models;
