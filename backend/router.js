@@ -5,10 +5,9 @@ var apps = express.Router();
 var models = require('./schema.js');
 
 apps.get('/', function (req, res) {
-	models.recipe.find({}, function (err, data) {
+	models.recipe.find({ }, function (err, data) {
 		res.json(data);
-
-	})
+	});
 
 	// .post(function(req, res) {
 	// 	req.body.id = apps.length;
