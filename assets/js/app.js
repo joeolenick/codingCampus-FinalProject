@@ -31,6 +31,7 @@ angular.module('recipe', [
   this.getIndividualRecipe = function(index) {
     return recipes[index];
   };
+  
   this.getRecipeList = function() {
     var dfd = $q.defer();
 

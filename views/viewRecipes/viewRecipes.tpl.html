@@ -1,4 +1,74 @@
-<div>
-  <h1>{{recipe | json}}</h1>
-  <p>This is the partial for view - View Recipes</p>
+
+
+<!-- Page Heading -->
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Something Good   <small>{{recipe.name}}</small>
+		</h1>
+	</div>
 </div>
+<!-- /.row -->
+
+<!-- Project One -->
+<div class="row">
+	<div class="col-md-7">
+		<a href="#">
+			<img class="img-responsive" src="http://lorempixel.com/700/300/" alt="">
+		</a>
+		<hr>
+	</div>
+	<div class="col-md-5">
+		<h3>{{recipe.name}} </h3>   <!-- Recipe name-->
+		<span ng-repeat= "type in recipe.mealType">{{type | uppercase}} </span><hr>   <!-- Recipe mealType-->
+		<p>{{recipe.previewText}} </p>
+		<p>User Rating: {{recipe.rating}} Stars</p>
+	</br>
+	<div ng-controller="MakeItSaveItRateIt">
+		<a class="btn btn-primary col-sm-offset-1" ng-click="addToCart('recipe.id')">Make it! <div class="glyphicon"></div>
+		</a>
+		<a class="btn btn-primary col-sm-offset-1" ng-click="saveToMyRecipes('recipe.id')">Save it! <div class="glyphicon"></div>
+		</a>
+		<a class="btn btn-primary col-sm-offset-1" ng-click="addToCart('recipe.id')">Rate it!<div class="glyphicon"></div>
+		</a>
+	</div>
+
+
+</div>	
+</div>
+<!-- /.row -->
+
+<hr>
+
+<!-- 
+
+<div class="detailBox">
+    <div class="titleBox">
+      <label>Comment Box</label>
+        <button type="button" class="close" aria-hidden="true">&times;</button>
+    </div>
+    <div class="commentBox">
+        
+        <p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    </div>
+    <div class="actionBox">
+        <ul class="commentList">
+            <li>
+                <div class="commenterImage">
+                  <img src="http://lorempixel.com/50/50/people/6" />
+                </div>
+                <div class="commentText">
+                    <p class="">{{comment.body}}</p> <span class="date sub-text">{{comment.datePosted}}</span>
+
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Your comments" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default">Add</button>
+            </div>
+        </form>
+    </div>
+</div> -->
