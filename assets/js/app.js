@@ -20,10 +20,12 @@ angular.module('recipe', [
     }
   };
 }])
+
 .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
   $routeProvider.otherwise({redirectTo: '/publicRecipes'});
   $httpProvider.interceptors.push('authInterceptor');
 }])
+
 .service('srvc', [ '$http', '$q', function($http, $q) {
   var recipes;
   this.getIndividualRecipe = function(index) {
@@ -52,10 +54,3 @@ angular.module('recipe', [
   };
 
 }])
-
-.controller('recipeListctrl', [ 'srvc', '$scope', function($service, $scope) {
-  $service.getRecipeList()
-  .then(function(recipeList) {
-    $scope.recipeList = recipeList;
-  });
-}]);
