@@ -1,69 +1,77 @@
 <!-- Custom styles for this template -->
 <link href="components/css/dashboard.css" rel="stylesheet">
 
-<div>
   <!--Sidebar slide out for my recipes -->
-  <div class="row row-offcanvas row-offcanvas-left">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
 
-          <p class="pull-left visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
+        <ul class="nav nav-sidebar">
+          <li><a href="#/myRecipes">Overview <span class="sr-only">(current)</span></a></li>
+          <li><a href="#/mealPlanning">Meal Planning</a></li>
+          <li><a href="#/eventPlanning">Event Planning</a></li>
+          <li><a href="#/friendsFamily">Friends and Family</a></li>
+        </ul>
 
+        <ul class="nav nav-sidebar">
+          <li><a href="#">Export to...</a></li>
+        </ul>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+      </div>
 
-          <ul class="nav nav-sidebar">
-            <li><a href="#/myRecipes">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#/mealPlanning">Meal Planning</a></li>
-            <li><a href="#/eventPlanning">Event Planning</a></li>
-            <li><a href="#/friendsFamily">Friends and Family</a></li>
-          </ul>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">My Recipes</h1>
 
-          <ul class="nav nav-sidebar">
-            <li><a href="#">Export to...</a></li>
-          </ul>
-
-        </div>
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">My Recipes</h1>
-
-          <div class="row placeholders well" >
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <h1>0</h1>
-              <h4>Created it</h4>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <h1>0</h1>
-              <h4>Made it</h4>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <h1>0</h1>
-              <h4>Saved it</h4>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <h1>0</h1>
-              <h4>Ate it</h4>
-            </div>
+        <div class="row placeholders well" >
+          <div class="col-xs-6 col-sm-3 placeholder">
+            <h1>0</h1>
+            <h4>Created it</h4>
           </div>
-
-          <h2 class="sub-header">Created</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Brief Desc.</th>
-                  <th>Type</th>
-                  <th>Public?</th>
-                </tr>
-              </thead>
-            </tbody>
-          </table>
+          <div class="col-xs-6 col-sm-3 placeholder">
+            <h1>0</h1>
+            <h4>Made it</h4>
+          </div>
+          <div class="col-xs-6 col-sm-3 placeholder">
+            <h1>0</h1>
+            <h4>Saved it</h4>
+          </div>
+          <div class="col-xs-6 col-sm-3 placeholder">
+            <h1>0</h1>
+            <h4>Ate it</h4>
+          </div>
         </div>
+
+        <h2 class="sub-header">Created</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th class= "col-md-2">Name</th>
+                <th class= "hidden-xs">Brief Desc.</th>
+                <th class= "hidden-xs">Rating</th>
+                <th class= "hidden-xs">Public?</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tr ng-repeat="recipe in recipeList">
+              <td>{{$index + 1}} </td>
+              <td>{{recipe.name}} </td>
+              <td class= "hidden-xs">{{recipe.previewText}} </td>
+              <td class= "hidden-xs">{{recipe.rating}} </td>
+              <td class= "hidden-xs">{{recipe.isPublic | uppercase}} </td>
+              <td>
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                  <div class="btn-group glyphicon glyphicon-edit" role="group" aria-label="..."></div>
+                  <div class="btn-group glyphicon glyphicon-share" role="group" aria-label="..."></div>
+                  <div class="btn-group glyphicon glyphicon-trash" role="group" aria-label="..."></div>
+                </div>
+              </td>
+            </tr> 
+          </tbody>
+        </table>
+      </div>
+
 
         <h2 class="sub-header">Saved</h2>
         <div class="table-responsive">
@@ -71,18 +79,27 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Brief Desc.</th>
-                <th>Type</th>
-                <th>Public?</th>
+                <th class= "col-md-2">Name</th>
+                <th class= "hidden-xs">Brief Desc.</th>
+                <th class= "hidden-xs">Rating</th>
+                <th class= "hidden-xs">Public?</th>
+                <th>Options</th>
               </tr>
             </thead>
+            <tr ng-repeat="recipe in recipeList">
+              <td>{{$index + 1}} </td>
+              <td>{{recipe.name}} </td>
+              <td class= "hidden-xs">{{recipe.previewText}} </td>
+              <td class= "hidden-xs">{{recipe.rating}} </td>
+              <td class= "hidden-xs">{{recipe.isPublic | uppercase}} </td>
+              <td>
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                  <div class="btn-group glyphicon glyphicon-copy" role="group" aria-label="..."></div>
+                  <div class="btn-group glyphicon glyphicon-share" role="group" aria-label="..."></div>
+                  <div class="btn-group glyphicon glyphicon-trash" role="group" aria-label="..."></div>
+                </div>
+              </td>
+            </tr> 
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-</div>
-</div>
-<!-- /.sidebar-offcanvas -->
-</div>

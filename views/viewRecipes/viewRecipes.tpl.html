@@ -23,7 +23,7 @@
 		<p>{{recipe.previewText}} </p>
 		<p>User Rating: {{recipe.rating}} Stars</p>
 	</br>
-	<div ng-controller="MakeItSaveItRateIt">
+	<div><!-- ng-controller="MakeItSaveItRateIt" -->
 		<a class="btn btn-primary col-sm-offset-1" ng-click="addToCart('recipe.id')">Make it! <div class="glyphicon"></div>
 		</a>
 		<a class="btn btn-primary col-sm-offset-1" ng-click="saveToMyRecipes('recipe.id')">Save it! <div class="glyphicon"></div>
