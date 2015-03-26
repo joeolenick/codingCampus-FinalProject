@@ -1,8 +1,8 @@
 //This is the schema file that defines the database design
 
 var mongoose = require('mongoose');
-//var db = mongoose.connect('mongodb://heroku_app35007124:rjs9h5av28f0qb4o1iji4tl6pe@ds043497.mongolab.com:43497/heroku_app35007124');
-var db = mongoose.connect('mongodb://localhost/recipe');
+var db = mongoose.connect('mongodb://heroku_app35007124:rjs9h5av28f0qb4o1iji4tl6pe@ds043497.mongolab.com:43497/heroku_app35007124');
+//var db = mongoose.connect('mongodb://localhost/recipe');
 
 var models = {};
 
@@ -56,6 +56,11 @@ var CommentSchema = mongoose.Schema({
 models.recipe = mongoose.model('recipes', RecipeSchema);
 models.user = mongoose.model('users', UserSchema);
 models.comment = mongoose.model('comments', CommentSchema);
+
+
+// var Joe = new models.user({
+//     firstName
+// });
 
 
 module.exports = models;
