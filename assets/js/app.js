@@ -10,7 +10,8 @@ angular.module('recipe', [
   'myApp.mealPlanning',
   'myApp.eventPlanning',
   'myApp.friendsFamily',
-  'myApp.shoppingList'
+  'myApp.shoppingList',
+  'myApp.newRecipes'
 ])
 .factory('authInterceptor', [ function() {
   return {
@@ -54,4 +55,22 @@ angular.module('recipe', [
     return dfd.promise;
   };
 
+  this.deleteRecipe = function(id) {
+  var dfd = $q.defer();
+
+    $http({
+      method:'DELETE',
+      url:'/recipes/' + id
+    })
+    .success(function(data) {
+      return dfd.resolve(data);
+    })
+    .error(function(err) {
+      return dfd.reject(err);
+    });
+
+    return dfd.promise;
+  };
+
 }])
+

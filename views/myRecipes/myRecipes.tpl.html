@@ -2,6 +2,7 @@
 <link href="components/css/dashboard.css" rel="stylesheet">
 
   <!--Sidebar slide out for my recipes -->
+<div ng-controller="myRecipesOptionsCtrl">
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
@@ -54,17 +55,17 @@
                 <th>Options</th>
               </tr>
             </thead>
-            <tr ng-repeat="recipe in recipeList">
+            <tr ng-repeat="createdRecipe in recipeList track by $index">
               <td>{{$index + 1}} </td>
-              <td>{{recipe.name}} </td>
-              <td class= "hidden-xs">{{recipe.previewText}} </td>
-              <td class= "hidden-xs">{{recipe.rating}} </td>
-              <td class= "hidden-xs">{{recipe.isPublic | uppercase}} </td>
+              <td>{{createdRecipe.name}} </td>
+              <td class= "hidden-xs">{{createdRecipe.previewText}} </td>
+              <td class= "hidden-xs">{{createdRecipe.rating}} </td>
+              <td class= "hidden-xs">{{createdRecipe.isPublic | uppercase}} </td>
               <td>
-                <div class="btn-toolbar" role="toolbar" aria-label="...">
-                  <div class="btn-group glyphicon glyphicon-edit" role="group" aria-label="..."></div>
-                  <div class="btn-group glyphicon glyphicon-share" role="group" aria-label="..."></div>
-                  <div class="btn-group glyphicon glyphicon-trash" role="group" aria-label="..."></div>
+                <div class="btn-toolbar" role="toolbar" aria-label="..." >
+                  <a  ng-href="#/editRecipes/{{$index}}"><div class="btn-group glyphicon glyphicon-edit" role="group"></div><a/>
+                  <div class="btn-group glyphicon glyphicon-share" role="group"></div>
+                  <div class="btn-group glyphicon glyphicon-trash" role="group" ng-click="deleteRecipe($index)"></div>
                 </div>
               </td>
             </tr> 
@@ -86,12 +87,12 @@
                 <th>Options</th>
               </tr>
             </thead>
-            <tr ng-repeat="recipe in recipeList">
+            <tr ng-repeat="savedRecipe in recipeList">
               <td>{{$index + 1}} </td>
-              <td>{{recipe.name}} </td>
-              <td class= "hidden-xs">{{recipe.previewText}} </td>
-              <td class= "hidden-xs">{{recipe.rating}} </td>
-              <td class= "hidden-xs">{{recipe.isPublic | uppercase}} </td>
+              <td>{{savedRecipe.name}} </td>
+              <td class= "hidden-xs">{{savedRecipe.previewText}} </td>
+              <td class= "hidden-xs">{{savedRecipe.rating}} </td>
+              <td class= "hidden-xs">{{savedRecipe.isPublic | uppercase}} </td>
               <td>
                 <div class="btn-toolbar" role="toolbar" aria-label="...">
                   <div class="btn-group glyphicon glyphicon-copy" role="group" aria-label="..."></div>
@@ -103,3 +104,4 @@
           </tbody>
         </table>
       </div>
+    </div>

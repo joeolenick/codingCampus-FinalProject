@@ -15,7 +15,6 @@
 		<a href="#">
 			<img class="img-responsive" src="http://lorempixel.com/700/300/" alt="">
 		</a>
-		<hr>
 	</div>
 	<div class="col-md-5">
 		<h3>{{recipe.name}} </h3>   <!-- Recipe name-->
@@ -31,13 +30,44 @@
 		<a class="btn btn-primary col-sm-offset-1" ng-click="addToCart('recipe.id')">Rate it!<div class="glyphicon"></div>
 		</a>
 	</div>
-
-
-</div>	
+    </div>	
+</div>
+<hr>
+<div class="row">
+<div class="table-responsive col-md-5">
+<h2 class="sub-header">Ingredients</h2>
+<hr>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Ingredient</th>
+            <th>Amount</th>
+            <th>Measure</th>
+          </tr>
+        </thead>
+      <tbody id="sort" class="grid" >
+        <tr ng-repeat="ingredient in recipe.ingredientList">
+          <td>{{$index + 1}} </td>
+          <td>{{ingredient.item}} </td>
+          <td>{{ingredient.amount }} </td>
+          <td>{{ingredient.unitOfMeasure }} </td>
+        </tr> 
+      </tbody>
+    </table>
+  </div>
+</div>
+   
+    <div class="col-md-7">
+        <h2 class="sub-header">Directions</h2>
+        <hr>
+        <p  class="sub-header" ng-repeat="steps in recipe.instructions">{{$index +1}}.  {{steps}} </p>
+    </div>
 </div>
 <!-- /.row -->
 
-<hr>
+
 
 <!-- 
 

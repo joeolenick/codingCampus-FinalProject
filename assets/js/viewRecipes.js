@@ -11,11 +11,5 @@ angular.module('myApp.viewRecipes', ['ngRoute'])
 
 .controller('viewRecipesCtrl', ['$routeParams', 'srvc', '$scope', function($routeParams, $srvc, $scope) {
   $scope.recipe = $srvc.getIndividualRecipe($routeParams.recipeIndex);
-}])
-
-
-
-// .controller('MakeItSaveItRateIt', ['srvc', '$scope', function($srvc, $scope){
-//   $scope.	
-// }]);
+}]);
 
