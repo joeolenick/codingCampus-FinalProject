@@ -146,7 +146,7 @@
 					</td>
 					<td>  
 						<div ng-hide="viewField[$index]">{{steps}}</div>
-						<div ng-show="viewField[$index]"><textarea rows="5" class="form-control" type="text" ng-model="steps" /></div>
+						<div ng-show="viewField[$index]"><textarea rows="5" class="form-control" type="text" ng-model="recipe.instructions[$index]" /></div>
 					</td>  
 					<td>
 						<div ng-hide="viewField[$index]" class="btn-toolbar" role="toolbar">
@@ -156,7 +156,6 @@
 						</div>
 						<div ng-show="viewField[$index]" class="btn-toolbar" role="toolbar">
 							<div class="btn-group glyphicon glyphicon-floppy-save" ng-click="update($index)" role="group"></div>
-
 						</div>
 					</td>
 				</tr>

@@ -74,7 +74,7 @@ angular.module('recipe', [
 
  this.putRecipe = function(recipe) {
     var dfd = $q.defer();
-
+      console.log(recipe);
     $http({
       method:'PUT',
       url:'/recipes/',
