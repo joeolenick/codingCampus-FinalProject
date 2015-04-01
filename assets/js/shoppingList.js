@@ -9,6 +9,6 @@ angular.module('myApp.shoppingList', ['ngRoute'])
   });
 }])
 
-.controller('shoppingListCtrl', [function() {
-
-}]);
+.controller('shoppingListCtrl', function($scope, cartService) {
+    $scope.cart = cartService.cart;
+});

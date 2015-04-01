@@ -1,5 +1,5 @@
 
-
+<div  ng-controller="editRecipesPutCtrl">
 <!-- Page Heading -->
 <div class="row">
 	<div class="col-lg-12">
@@ -16,19 +16,61 @@
 			<img class="img-responsive" src="http://lorempixel.com/700/300/" alt="">
 		</a>
 	</div>
-	<form ng-submit="editRecipe()">
+	<form ng-submit="putRecipe()">
 		<div class="col-md-5">
-			<h3><label>Name: </label><input class="form-control" type="text" ng-model="form.name" placeholder="{{recipe.name}} "></h3>   <!-- Recipe name-->
-			<span ng-repeat= "type in recipe.mealType">
-				<input class="form-control" type="text" ng-model="form.ingredient.index" placeholder="{{type}}">
-			</span><hr>   
-			<p>{{recipe.previewText}} </p>
-			<p>User Rating: {{recipe.rating}} Stars</p>
+
+<!-- Recipe Attributes Table -->
+<table class="table table-striped">
+<thead>
+	<tr>
+	<th>Recipe Attributes</th>
+	<th class="col-md-2">Options</th>
+	</tr>
+</thead>
+
+<tbody>
+	<tr><td>			<!-- Recipe name-->
+				<div ng-hide="viewField"><label>Name: </label>{{recipe.name}}</div>
+				<div ng-show="viewField"><input class="form-control" type="text" ng-model="recipe.name" /></div>
+	</td><td>
+				<div ng-hide="viewField" class="btn-toolbar" role="toolbar">
+					<div class="btn-group glyphicon glyphicon-edit" ng-click="modify(recipe.name)" role="group"></div>
+				</div>
+				<div ng-show="viewField" class="btn-toolbar" role="toolbar">
+					<div class="btn-group glyphicon glyphicon-floppy-save" ng-click="update(recipe.name)" role="group"></div>
+				</div>
+
+	</td></tr>
+
+	<tr ng-repeat= "type in recipe.mealType track by $index">			<!-- Recipe Meal Type-->
+				<td>
+					<div ng-hide="viewField"><label>Meal Type: </label>{{type}}</div>
+					<div ng-show="viewField"><input class="form-control" type="text" ng-model="type" /></div>
+				</td>
+				<td>
+					<div class="btn-group glyphicon glyphicon-trash" ng-click="deleteMealType($index)" role="group"></div>
+					<div class="btn-group glyphicon glyphicon-plus" ng-click="addMealTypeRow($index)" role="group"></div>
+				</td>
+	</tr>
+	<tr>															<!-- Recipe PreviewText-->
+				<td>
+					<div ng-hide="viewField"><label>Desc: </label>{{recipe.previewText}}</div>
+					<div ng-show="viewField"><textarea rows="5" class="form-control" type="text" ng-model="recipe.previewText" /></div>	
+ 
+				</td>
+				<td>
+				</td>
+	</tr>
+
+	</tbody>
+</table>
+			<hr>   
+			<p>User Rating: {{recipe.rating}} Stars</p> 
 		</br>
-		<div><!-- ng-controller="MakeItSaveItRateIt" -->
-			<a class="btn btn-primary col-sm-offset-1" ng-click="addToCart('recipe.id')">Stuff<div class="glyphicon"></div>
+		<div>
+			<a class="btn btn-primary col-sm-offset-1" ng-click="putRecipe()"   href="#/myRecipes/">Save Changes<div class="glyphicon"></div>
 			</a>
-			<a class="btn btn-primary col-sm-offset-1" ng-click="saveToMyRecipes('recipe.id')">Stuff<div class="glyphicon"></div>
+			<a class="btn btn-primary col-sm-offset-1" href="#/myRecipes">Cancel<div class="glyphicon"></div>
 			</a>
 			<a class="btn btn-primary col-sm-offset-1" ng-click="addToCart('recipe.id')">Stuff<div class="glyphicon"></div>
 			</a>
@@ -37,8 +79,8 @@
 </div>
 <hr>
 
-<div class="row" ng-controller="editRecipesOptionsCtrl">
-	<div class="table-responsive col-md-6">
+<div class="row">
+	<div class="table-responsive col-md-6" ng-controller="editRecipesIngredientOptionsCtrl">
 		<h2 class="sub-header">Ingredients</h2>
 		<div>
 			<table class="table table-striped">
@@ -72,13 +114,14 @@
 						<td>
 							<div ng-hide="viewField[$index]" class="btn-toolbar" role="toolbar">
 								<div class="btn-group glyphicon glyphicon-edit" ng-click="modify($index)" role="group"></div>
-								<div class="btn-group glyphicon glyphicon-trash" role="group"></div>
-								<div class="btn-group glyphicon glyphicon-plus" role="group"></div>
+								<div class="btn-group glyphicon glyphicon-trash" ng-click="deleteIngredient($index)" role="group"></div>
+								<div class="btn-group glyphicon glyphicon-plus" ng-click="addIngredientRow($index)" role="group"></div>
 							</div>
 							<div ng-show="viewField[$index]" class="btn-toolbar" role="toolbar">
 								<div class="btn-group glyphicon glyphicon-floppy-save" ng-click="update($index)" role="group"></div>
 
 							</div>
+
 						</td>
 					</tr> 
 				</tbody>
@@ -86,7 +129,7 @@
 		</div>
 	</div>
 
-	<div class="table-responsive col-md-6">
+	<div class="table-responsive col-md-6" ng-controller="editRecipesInstructionsOptionsCtrl">
 		<h2 class="sub-header">Directions</h2>
 		<table class="table table-striped">
 			<thead>
@@ -97,18 +140,30 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="sub-header" ng-repeat="steps in recipe.instructions">
-					<td>{{$index +1}}.</td>
-					<td>  {{steps}} </td>  
+				<tr class="sub-header" ng-repeat="steps in recipe.instructions track by $index">
 					<td>
-						<div class="btn-toolbar" role="toolbar" aria-label="..." >
-							<div class="btn-group glyphicon glyphicon-edit" role="group"></div>
-							<div class="btn-group glyphicon glyphicon-trash" role="group"></div>
-							<div class="btn-group glyphicon glyphicon-plus" role="group"></div>
+						<div ng-hide="viewField[$index]">{{$index +1}}</div>
+					</td>
+					<td>  
+						<div ng-hide="viewField[$index]">{{steps}}</div>
+						<div ng-show="viewField[$index]"><textarea rows="5" class="form-control" type="text" ng-model="steps" /></div>
+					</td>  
+					<td>
+						<div ng-hide="viewField[$index]" class="btn-toolbar" role="toolbar">
+							<div class="btn-group glyphicon glyphicon-edit" ng-click="modify($index)" role="group"></div>
+							<div class="btn-group glyphicon glyphicon-trash"  ng-click="deleteInstruction($index)"  role="group"></div>
+							<div class="btn-group glyphicon glyphicon-plus" ng-click="addInstructionRow($index)" role="group"></div>
+						</div>
+						<div ng-show="viewField[$index]" class="btn-toolbar" role="toolbar">
+							<div class="btn-group glyphicon glyphicon-floppy-save" ng-click="update($index)" role="group"></div>
+
 						</div>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+	</form> 
 	</div>
+	<div class="btn-group glyphicon glyphicon-tag" ng-click="consoleLog()" role="group"></div>
+</div>
 </div>

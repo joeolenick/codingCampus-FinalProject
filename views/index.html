@@ -19,7 +19,7 @@
     <link href="/components/css/commentBox.css" rel="stylesheet">
 
     <!-- favicon -->
-    <link rel="icon" href="../favicon.ico"> 
+    <link rel="icon" href="favicon.ico"> 
 
 
 
@@ -55,7 +55,7 @@
                     <li><a href="#/publicRecipes">Browse</a></li>
                     <li><a href="#/newRecipes">Create it!</a></li>
                     <li><a href="#/myRecipes">My Recipes</a></li>
-                    <li><a href="#/shoppingList">Shopping List {{listCount}} </a></li>
+                    <li ng-controller="viewRecipesOptions"><a href="#/shoppingList">Shopping List {{listCount}} </a></li>
                 </ul>
                 <form class="navbar-form navbar-right">
                     <input type="text" class="form-control" placeholder="Find something good...">

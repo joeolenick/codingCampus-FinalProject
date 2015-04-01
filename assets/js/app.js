@@ -72,5 +72,41 @@ angular.module('recipe', [
     return dfd.promise;
   };
 
+ this.putRecipe = function(recipe) {
+    var dfd = $q.defer();
+
+    $http({
+      method:'PUT',
+      url:'/recipes/',
+      data:recipe
+    })
+    .success(function(data) {
+      return dfd.resolve(data);
+    })
+    .error(function(err) {
+      return dfd.reject(err);
+    });
+
+    return dfd.promise;
+  };
+
 }])
+
+.service('cartService', function(){
+  this.cart = [];
+})
+.controller('viewRecipesOptions', function ($scope, cartService) {
+  $scope.addtoShoppingList = function(){
+
+    for(var i in $scope.recipe.ingredientList){
+      cartService.cart.push($scope.recipe.ingredientList[i])
+    }
+    console.log('Making It!')
+
+    $scope.listCount = cartService.cart.length;
+    $scope.cart = cartService.cart;
+  }
+    
+})
+
 

@@ -17,6 +17,8 @@ angular.module('myApp.publicRecipes',  ['ngRoute'])
   $service.getRecipeList()
   .then(function(recipeList) {
     $scope.recipeList = recipeList;
-  });
-}]);
+  })
+}])
+
+
 
