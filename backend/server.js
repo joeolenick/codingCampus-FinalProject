@@ -48,7 +48,7 @@ apps.get('/template/:templateName', function(req, res, next) {
 //Linking router variables to url path used
 apps.use('/recipes/', recipes);
 
-Port the apps will run on - This sets the port to be the environment port for heroku or a port number for local machine. 
+//Port the apps will run on - This sets the port to be the environment port for heroku or a port number for local machine. 
 var port = process.env.PORT || 5000
 apps.listen(port);
 
