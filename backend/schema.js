@@ -52,15 +52,16 @@ var CommentSchema = mongoose.Schema({
     commentRating: Number       //Going to use this to filter out trash comments
 })
 
+var imageSchema = mongoose.Schema({
+    imageName: String,
+
+
+})
+
 
 models.recipe = mongoose.model('recipes', RecipeSchema);
 models.user = mongoose.model('users', UserSchema);
 models.comment = mongoose.model('comments', CommentSchema);
-
-
-// var Joe = new models.user({
-//     firstName
-// });
-
+models.image = mongoose.model('images', imageSchema);
 
 module.exports = models;

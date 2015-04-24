@@ -1,7 +1,7 @@
 <!-- Page Heading -->
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Something Good   <small>Browse</small>
+		<h1 class="page-header">Browse for Something Good   <small></small>
 		</h1>
 	</div>
 </div>
@@ -19,7 +19,7 @@
 		<h3>{{recipe.name}} </h3>   <!-- Recipe name-->
 		<span ng-repeat= "type in recipe.mealType">{{type | uppercase}} </span><hr>   <!-- Recipe mealType-->
 		<p>{{recipe.previewText}} </p>
-		<p>User Rating: {{recipe.rating}} Stars</p>
+		<!-- <p>User Rating: {{recipe.rating}} Stars</p> -->
 		<a class="btn btn-primary" ng-href="#/viewRecipes/{{$index}}">View it!  <span class="glyphicon glyphicon-chevron-right"></span></a><hr>
 	</div>	
 </div>

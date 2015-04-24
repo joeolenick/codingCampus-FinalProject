@@ -3,6 +3,7 @@
 angular.module('myApp.editRecipes', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
+
   $routeProvider.when('/editRecipes/:recipeIndex', {
     templateUrl: '/template/editRecipes',
     controller: 'editRecipesCtrl'

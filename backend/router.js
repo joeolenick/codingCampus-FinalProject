@@ -47,21 +47,21 @@ apps.route('/')
 	})
 })
 
-// apps.route('/:id')
+apps.route('/:id')
 
-// 	.delete(function(req, res){
-// 	models.recipe.findOne({_id: req.params.id}, function (err, data) {
-// 		if (!data) {
-// 			res.send('id not found');
-// 			return;
-// 		}
-// 		data.remove( function (err, data) {
-// 			if (err) {
-// 				res.send('delete failed');
-// 				return;
-// 			}
-// 			res.send('delete successful');
-// 		});
-// 	});
-// });
+	.delete(function(req, res){
+	models.recipe.findOne({_id: req.params.id}, function (err, data) {
+		if (!data) {
+			res.send('id not found');
+			return;
+		}
+		data.remove( function (err, data) {
+			if (err) {
+				res.send('delete failed');
+				return;
+			}
+			res.send('delete successful');
+		});
+	});
+});
 module.exports = apps;
